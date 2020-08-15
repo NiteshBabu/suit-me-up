@@ -27,7 +27,7 @@
     cursor: pointer;
     & .pic{
       transform : scale(1.1);
-      transition: transform 6000ms cubic-bezier(.25,.25,.45,0.95);
+      transition: transform 4000ms cubic-bezier(.25,.25,.45,0.95);
     }
 
     & .content{

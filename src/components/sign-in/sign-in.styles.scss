@@ -1,0 +1,19 @@
+form{
+  width:40%;
+  padding: 5px 20px;
+
+  .buttons{
+    display: flex;
+    justify-content : space-between;
+
+    .google{
+      background: #1111ff;
+
+      &:hover{
+        background: white;
+        color: #1111ff;
+        border:1px solid #1111ff;
+      }
+    }
+  }
+}
