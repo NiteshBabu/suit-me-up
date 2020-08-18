@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import './Shop.styles.scss' 
 
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 import {auth, createUserProfileDocument} from './firebase/firebase.utils'
 import {connect} from 'react-redux'
+
 
 import HomePage from './pages/homepage/homepage.component'
 import ShopPage from './pages/shoppage/shoppage.component'
@@ -12,7 +13,6 @@ import Header from './components/header/header.component'
 import {setCurrentUser} from './redux/user/user.actions'
 
 class Shop extends Component{
-
   unsubscribeFromAuth = null
 
   componentDidMount(){
@@ -42,16 +42,20 @@ class Shop extends Component{
         <Switch>
           <Route exact path='/' component={HomePage}></Route>
           <Route path='/shop' component={ShopPage}></Route>
-          <Route path='/signin' component={SignInSignUp}></Route>
+          <Route exact path='/signin' render={()=> this.props.currentUser ? (<Redirect path='/'/>) : (<SignInSignUp />)}></Route>
         </Switch>
       </main>
     )
   }
 }
 
+const mapStateToProps = ({user}) =>({
+  currentUser : user.currentUser
+})
+
 const mapDispatchToProps = dispatch =>({
   setCurrentUser : user => dispatch(setCurrentUser(user))
 })
 
 
-export default connect(null, mapDispatchToProps)(Shop)
+export default connect(mapStateToProps, mapDispatchToProps)(Shop)
