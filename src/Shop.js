@@ -42,7 +42,7 @@ class Shop extends Component{
         <Switch>
           <Route exact path='/' component={HomePage}></Route>
           <Route path='/shop' component={ShopPage}></Route>
-          <Route exact path='/signin' render={()=> this.props.currentUser ? (<Redirect path='/'/>) : (<SignInSignUp />)}></Route>
+          <Route exact path='/signin' render={()=> this.props.currentUser ? (<Redirect to='/'/>) : (<SignInSignUp />)}></Route>
         </Switch>
       </main>
     )

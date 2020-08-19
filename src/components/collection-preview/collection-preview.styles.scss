@@ -1,11 +1,12 @@
 .collection-preview{
   display : flex;
   flex-direction : column;
+  justify-content: center;
   
   .title{
     text-align: center;
     font-size: 25px;
-    margin-bottom : 30px; 
+    margin-bottom : 30px;
   }
   .items{
     display: flex;
